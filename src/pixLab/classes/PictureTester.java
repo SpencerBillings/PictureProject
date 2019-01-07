@@ -41,7 +41,14 @@ public class PictureTester
 	  blueMark.explore();
 	  blueMark.mirrorVerticalRToL();
 	  blueMark.explore();
-	  
+  }
+  
+  public static void testMirrorHorizontal()
+  {
+	  Picture redMotor = new Picture("redMotorcycle.jpg");
+	  redMotor.explore();
+	  redMotor.mirrorHorizontal();
+	  redMotor.explore();
   }
   
   /** Method to test mirrorTemple */
@@ -51,6 +58,14 @@ public class PictureTester
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
+  }
+  
+  public static void testMirrorSeagull()
+  {
+	  Picture seagull = new Picture("seagull.jpg");
+	  seagull.explore();
+	  seagull.mirrorSeagull();
+	  seagull.explore();
   }
   
   /** Method to test the collage method */
@@ -84,13 +99,15 @@ public class PictureTester
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    testMirrorVertical();
-	testMirrorVerticalRToL();
+    //testMirrorVertical();
+	//testMirrorVerticalRToL();
+	//testMirrorHorizontal();
     //testMirrorTemple();
+    //testMirrorSeagull();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
-    //testCollage();
+    testCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();

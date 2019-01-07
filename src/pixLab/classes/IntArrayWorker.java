@@ -121,7 +121,7 @@ public class IntArrayWorker
   
   public int getLargest()
   {
-	  int largest = -999;
+	  int largest = Integer.MIN_VALUE;
 	  
 	  for (int [] row : matrix)
 	  {
@@ -141,12 +141,9 @@ public class IntArrayWorker
   {
 	  int total = 0;
 	  
-	  for (int [] column : matrix)
+	  for (int row = 0; row < matrix.length; row++)
 	  {
-		  for (int item : column)
-		  {
-			  total += item;
-		  }
+		total += matrix[row][colIndex];  
 	  }
 	  
 	  return total;

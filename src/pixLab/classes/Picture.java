@@ -148,6 +148,24 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  public void mirrorHorizontal()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel topPixel = null;
+	  Pixel bottomPixel = null;
+	  int height = pixels.length;
+	  for (int col = 0; col < pixels[0].length; col++)
+	  {
+		  for (int row = 0; row < height / 2; row++)
+		  {
+			  topPixel = pixels[row][col];
+			  bottomPixel = pixels[height - 1 - row][col];
+			  //topPixel.setColor(bottomPixel.getColor());
+			  bottomPixel.setColor(topPixel.getColor());
+		  }
+	  }
+  }
+  
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
@@ -165,11 +183,43 @@ public class Picture extends SimplePicture
       {
         
         leftPixel = pixels[row][col];      
-        rightPixel = pixels[row]                       
-                         [mirrorPoint - col + mirrorPoint];
+        rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+  }
+  
+  public void mirrorSeagull()
+  {
+	  int mirrorPointOne = 350;
+	  int mirrorPointTwo = 470;
+	  int mirrorPointThree = 590;
+	  
+	  Pixel leftPixel = null;
+	  Pixel rightPixel = null;
+	  int count = 0;
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (int row = 230; row < 330; row++)
+	  {
+		  for (int col = 230; col < mirrorPointOne; col++)
+		  {
+			  leftPixel = pixels[row][col];
+			  rightPixel = pixels[row][mirrorPointOne - col + mirrorPointOne];
+			  rightPixel.setColor(leftPixel.getColor());
+		  }
+//		  for (int col = 350; col < mirrorPointTwo; col++)
+//		  {
+//			  leftPixel = pixels[row][col];
+//			  rightPixel = pixels[row][mirrorPointTwo - col + mirrorPointTwo];
+//			  rightPixel.setColor(leftPixel.getColor());
+//		  }
+//		  for (int col = 470; col < mirrorPointThree; col++)
+//		  {
+//			  leftPixel = pixels[row][col];
+//			  rightPixel = pixels[row][mirrorPointThree - col + mirrorPointThree];
+//			  rightPixel.setColor(leftPixel.getColor());
+//		  }
+	  }
   }
   
   /** copy from the passed fromPic to the
@@ -222,7 +272,7 @@ public class Picture extends SimplePicture
   
   
   /** Method to show large changes in color 
-    * @param edgeDist the distance for finding edges
+    * @param edgeDist the 0;distance for finding edges
     */
   public void edgeDetection(int edgeDist)
   {
