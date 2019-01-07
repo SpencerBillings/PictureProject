@@ -1,4 +1,5 @@
 package pixLab.classes;
+
 public class IntArrayWorker
 {
   /** two dimensional matrix */
@@ -104,7 +105,7 @@ public class IntArrayWorker
   {
 	  int count = 0;
 	  
-	  for(int [] row : matrix)
+	  for (int [] row : matrix)
 	  {
 		  for (int item : row)
 		  {
@@ -116,5 +117,38 @@ public class IntArrayWorker
 	  }
 	  
 	  return count;
+  }
+  
+  public int getLargest()
+  {
+	  int largest = -999;
+	  
+	  for (int [] row : matrix)
+	  {
+		  for (int item : row)
+		  {
+			  if (item > largest)
+			  {
+				  largest = item;
+			  }
+		  }
+	  }
+	  
+	  return largest;
+  }
+  
+  public int getColTotal(int colIndex)
+  {
+	  int total = 0;
+	  
+	  for (int [] column : matrix)
+	  {
+		  for (int item : column)
+		  {
+			  total += item;
+		  }
+	  }
+	  
+	  return total;
   }
 }
