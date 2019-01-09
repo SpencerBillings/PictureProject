@@ -86,6 +86,22 @@ public class Picture extends SimplePicture
     
   }
   
+  public void glitcher()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel leftPixel = null;
+	  Pixel rightPixel = null;
+	  for (int row = 0; row < 480; row += 20)
+	  {
+		  for (int col = 0; col < ; row++)
+		  {
+			  leftPixel = pixels[row][col];
+			  rightPixel = leftPixel;
+			  rightPixel.setColor(leftPixel.getColor());
+		  }
+	  }
+  }
+  
   /** Method to set the blue to 0 */
   public void zeroBlue()
   {
@@ -251,6 +267,23 @@ public class Picture extends SimplePicture
         toPixel.setColor(fromPixel.getColor());
       }
     }   
+  }
+  
+  public void chromakey(Picture replacement, Color changeColor)
+  {
+	  Pixel [][] mainPixels = this.getPixels2D();
+	  Pixel [][] replacementPixels = replacement.getPixels2D();
+	  
+	  for (int row = 0; row < mainPixels.length; row++)
+	  {
+		  for (int col = 0; col < mainPixels[0].length; col++)
+		  {
+			  if (mainPixels[row][col].colorDistance(changeColor) < 75)
+			  {
+				  mainPixels[row][col].setColor(replacementPixels[row][col].getColor());
+			  }
+		  }
+	  }
   }
 
   /** Method to create a collage of several pictures */
