@@ -20,10 +20,11 @@ public class PictureTester
 	
 	public static void testGlitcher()
 	{
-		Picture mark = new Picture("blue-mark.jpg");
-		mark.explore();
-		mark.glitcher();
-		mark.explore();
+		Picture spaceWalk = new Picture("space-walk.png");
+		spaceWalk.explore();
+		spaceWalk.shiftLeftRight(20);
+		spaceWalk.glitcher();
+		spaceWalk.explore();
 	}
 	
 	public static void testChromakey()
@@ -119,7 +120,8 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-	  testShiftLeftRight();
+	  //testShiftLeftRight();
+	  testGlitcher();
     //testZeroBlue();
     //testZeroRed();
     //testKeepOnlyBlue();

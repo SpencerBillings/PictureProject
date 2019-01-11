@@ -76,7 +76,16 @@ public class Picture extends SimplePicture
    * Method to return a string with information about this picture.
    * @return a string with information about the picture such as fileName,
    * height and width.
-   */
+   */ 
+  public String toString()
+  {
+    String output = "Picture, filename " + getFileName() + 
+      " height " + getHeight() 
+      + " width " + getWidth();
+    return output;
+    
+  }
+  
   public void shiftLeftRight(int amount)
   {
 		Pixel[][] pixels = this.getPixels2D();
@@ -104,29 +113,48 @@ public class Picture extends SimplePicture
 		
   }
   
-  public String toString()
+  public void shiftUpDown(int amount)
   {
-    String output = "Picture, filename " + getFileName() + 
-      " height " + getHeight() 
-      + " width " + getWidth();
-    return output;
-    
+	  Pixel[][] pixels = this.getPixels2D();
+	  Picture temp = new Picture(this);
+	  Pixel[][] copied = temp.getPixels2D();
+		
+	  int shiftedValue = amount;
+	  int height = pixels.length;
+		
+	  for(int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  shiftedValue = (col + amount) % height;
+			  copied[row][col].setColor(pixels[row][shiftedValue].getColor());
+		  }
+	  }
+	  for(int row = 0; row < pixels.length; row++)
+	  {
+		  for(int col = 0; col < pixels[0].length; col++)
+		  {
+			  pixels[row][col].setColor(copied[row][col].getColor());
+		  }
+	  }
   }
   
   public void glitcher()
   {
 	  Pixel[][] pixels = this.getPixels2D();
-	  Pixel leftPixel = null;
-	  Pixel rightPixel = null;
-	  for (int row = 0; row < 480; row += 20)
+	  Picture spaceWalk = new Picture(this);
+	  Pixel[][] copied = spaceWalk.getPixels2D();
+	
+	  //Color c = new Color(red, green, blue, alpha);
+	  
+	  for(int row = 0; row < pixels.length; row++)
 	  {
-		  for (int col = 0; col < ; row++)
+		  for(int col = 0; col < pixels[0].length; col++)
 		  {
-			  leftPixel = pixels[row][col];
-			  rightPixel = leftPixel;
-			  rightPixel.setColor(leftPixel.getColor());
+			  pixels[row][col].setAlpha(50);
 		  }
 	  }
+	
   }
   
   /** Method to set the blue to 0 */
