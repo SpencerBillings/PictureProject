@@ -21,9 +21,9 @@ public class PictureTester
 	public static void testGlitcher()
 	{
 		Picture spaceWalk = new Picture("space-walk.png");
-		spaceWalk.explore();
-		spaceWalk.shiftLeftRight(20);
-		spaceWalk.glitcher();
+		//spaceWalk.shiftRight(20);
+		spaceWalk.shiftUpDown(20);
+		spaceWalk.shiftLeft(20);
 		spaceWalk.explore();
 	}
 	
@@ -53,6 +53,14 @@ public class PictureTester
 	  beach.explore();
 	  beach.zeroRed();
 	  beach.explore();
+  }
+  
+  public static void testSetAlpha()
+  {
+	  Picture spaceWalk = new Picture("space-walk.png");
+	  spaceWalk.explore();
+	  spaceWalk.setCustomAlpha(75);
+	  spaceWalk.explore();
   }
   
   /** Method to test mirrorVertical */
@@ -124,6 +132,7 @@ public class PictureTester
 	  testGlitcher();
     //testZeroBlue();
     //testZeroRed();
+    //testHalfAlpha();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();

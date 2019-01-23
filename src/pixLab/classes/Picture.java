@@ -86,7 +86,7 @@ public class Picture extends SimplePicture
     
   }
   
-  public void shiftLeftRight(int amount)
+  public void shiftLeft(int amount)
   {
 		Pixel[][] pixels = this.getPixels2D();
 		Picture temp = new Picture(this);
@@ -100,6 +100,40 @@ public class Picture extends SimplePicture
 			for(int col = 0; col < pixels[0].length; col++)
 			{
 				shiftedValue = (col + amount) % width;
+				copied[row][col].setColor(pixels[row][shiftedValue].getColor());
+			}
+		}
+		for(int row = 0; row < pixels.length; row++)
+		{
+			for(int col = 0; col < pixels[0].length; col++)
+			{
+				int r = pixels[row][col].getRed();
+				int g = pixels[row][col].getGreen();
+				int b = pixels[row][col].getBlue();
+				//pixels[row][col].setColor(copied[row][col].getColor());
+				copied[row][col].setRed(r);
+				copied[row][col].setBlue(b);
+				copied[row][col].setGreen(g);
+				copied[row][col].setAlpha(40);
+			}
+		}
+		
+  }
+  
+  public void shiftRight(int amount)
+  {
+		Pixel[][] pixels = this.getPixels2D();
+		Picture temp = new Picture(this);
+		Pixel[][] copied = temp.getPixels2D();
+		
+		int shiftedValue = amount;
+		int width = pixels[0].length;
+		
+		for(int row = 0; row < pixels.length; row++)
+		{
+			for(int col = 0; col < pixels[0].length; col++)
+			{
+				shiftedValue = (col - amount) % width;
 				copied[row][col].setColor(pixels[row][shiftedValue].getColor());
 			}
 		}
@@ -126,8 +160,8 @@ public class Picture extends SimplePicture
 	  {
 		  for(int col = 0; col < pixels[0].length; col++)
 		  {
-			  shiftedValue = (col + amount) % height;
-			  copied[row][col].setColor(pixels[row][shiftedValue].getColor());
+			  shiftedValue = (row + amount) % height;
+			  copied[row][col].setColor(pixels[shiftedValue][col].getColor());
 		  }
 	  }
 	  for(int row = 0; row < pixels.length; row++)
@@ -135,6 +169,7 @@ public class Picture extends SimplePicture
 		  for(int col = 0; col < pixels[0].length; col++)
 		  {
 			  pixels[row][col].setColor(copied[row][col].getColor());
+			  copied[row][col].setAlpha(60);
 		  }
 	  }
   }
@@ -145,6 +180,7 @@ public class Picture extends SimplePicture
 	  Picture spaceWalk = new Picture(this);
 	  Pixel[][] copied = spaceWalk.getPixels2D();
 	
+	  
 	  //Color c = new Color(red, green, blue, alpha);
 	  
 	  for(int row = 0; row < pixels.length; row++)
@@ -155,6 +191,30 @@ public class Picture extends SimplePicture
 		  }
 	  }
 	
+  }
+  
+  public void zeroRed()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+		  {
+			  pixelObj.setRed(0);
+		  }
+	  }
+  }
+  
+  public void zeroGreen()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+		  {
+			  pixelObj.setGreen(0);
+		  }
+	  }
   }
   
   /** Method to set the blue to 0 */
@@ -170,14 +230,14 @@ public class Picture extends SimplePicture
     }
   }
   
-  public void zeroRed()
+  public void setCustomAlpha(int a)
   {
 	  Pixel[][] pixels = this.getPixels2D();
 	  for (Pixel[] rowArray : pixels)
 	  {
-		  for (Pixel[] pixelObj : rowArray)
+		  for (Pixel pixelObj : rowArray)
 		  {
-			  pixelObj.setRed(0);
+			  pixelObj.setAlpha(a);
 		  }
 	  }
   }
@@ -394,7 +454,10 @@ public class Picture extends SimplePicture
     Picture beach = new Picture("beach.jpg");
     beach.explore();
     beach.zeroBlue();
+    beach.zeroRed();
     beach.explore();
   }
+  
+
   
 } // this } is the end of class Picture, put all new methods before this
