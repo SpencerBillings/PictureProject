@@ -10,20 +10,32 @@ import java.awt.*;
  */
 public class PictureTester
 {
+	public static void testSteganography()
+	{
+		Picture source= new Picture("blue-mark.jpg");
+		
+		Picture hidden = new Picture("JohannesG.jpg");
+		source.explore();
+		hidden.explore();
+		source.hidePicture(hidden);
+		source.explore();
+		source.revealPicture();
+		source.explore();
+	}
+	
 	public static void testShiftLeftRight()
 	{
 		Picture temp = new Picture("moon-surface.jpg");
 		temp.explore();
-		temp.shiftLeftRight(20);
+		temp.shiftLeftRight(-20);
 		temp.explore();
 	}
 	
 	public static void testGlitcher()
 	{
 		Picture spaceWalk = new Picture("space-walk.png");
-		//spaceWalk.shiftRight(20);
-		spaceWalk.shiftUpDown(20);
-		spaceWalk.shiftLeft(20);
+		//spaceWalk.shiftUpDown(20);
+		spaceWalk.verticleGlitcher();
 		spaceWalk.explore();
 	}
 	
@@ -128,6 +140,7 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
+	  //testSteganography();
 	  //testShiftLeftRight();
 	  testGlitcher();
     //testZeroBlue();
