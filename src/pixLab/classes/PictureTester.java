@@ -36,6 +36,7 @@ public class PictureTester
 		Picture spaceWalk = new Picture("space-walk.png");
 		//spaceWalk.shiftUpDown(20);
 		spaceWalk.verticleGlitcher();
+		spaceWalk.horizontalGlitcher();
 		spaceWalk.explore();
 	}
 	

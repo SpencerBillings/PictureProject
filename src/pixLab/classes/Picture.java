@@ -153,18 +153,15 @@ public class Picture extends SimplePicture
 	  Pixel nextPixel = null;
 	  Pixel[][] pixels = this.getPixels2D();
 	  
-	  int glitchPoint = 200;
-	  int glitchPointTwo = 450;
-	  int glitchPointThree = 800;
-	  int glitchPointFour = 1000;
+	  int glitchPoint = 150;
 	  
-	  int col = glitchPoint - 50;
+	  int col = glitchPoint - 20;
 	  
 	  while(col < 1130)
 	  {
 		  for (int row = 0; row < 848; row++)
 		  {
-			  for (col = glitchPoint - 50; col < glitchPoint; col++)
+			  for (col = glitchPoint - 20; col < glitchPoint; col++)
 			  {
 					  copiedPixel = pixels[row][glitchPoint];
 					  nextPixel = pixels[row][col];
@@ -173,25 +170,31 @@ public class Picture extends SimplePicture
 		  }
 		  glitchPoint += 100;
 	  }
-//	  for (int row = 0; row < 848; row++)
-//	  {
-//		  for (int col = glitchPointTwo - 50; col < glitchPointTwo; col++)
-//		  {
-//			  copiedPixel = pixels[row][glitchPointTwo];
-//			  nextPixel = pixels[row][col];
-//			  nextPixel.setColor(copiedPixel.getColor());
-//		  }
-//	  }
-//	  
-//	  for (int row = 0; row < 848; row++)
-//	  {
-//		  for (int col = glitchPointThree - 50; col < glitchPointThree; col++)
-//		  {
-//			  copiedPixel = pixels[row][glitchPointThree];
-//			  nextPixel = pixels[row][col];
-//			  nextPixel.setColor(copiedPixel.getColor());
-//		  }
-//	  }
+  }
+  
+  public void horizontalGlitcher()
+  {
+	  Pixel copiedPixel = null;
+	  Pixel nextPixel = null;
+	  Pixel[][] pixels = this.getPixels2D();
+	  
+	  int glitchPoint = 40;
+	  
+	  int row = glitchPoint - 5;
+	  
+	  while(row < 800)
+	  {
+		  for (int col = 0; col < 1280; col++)
+		  {
+			  for (row = glitchPoint - 5; row < glitchPoint; row++)
+			  {
+					  copiedPixel = pixels[glitchPoint][col];
+					  nextPixel = pixels[row][col];
+					  nextPixel.setColor(copiedPixel.getColor());
+			  }
+		  }
+		  glitchPoint += 50;
+	  }
   }
   
   public void glitcher()
