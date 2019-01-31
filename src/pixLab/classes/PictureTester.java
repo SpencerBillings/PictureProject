@@ -34,7 +34,11 @@ public class PictureTester
 	public static void testGlitcher()
 	{
 		Picture spaceWalk = new Picture("space-walk.png");
-		//spaceWalk.shiftUpDown(20);
+		Picture galaxy = new Picture("galaxy.png");
+		
+		spaceWalk.horizontalGreen();
+		spaceWalk.chromakey(galaxy, Color.GREEN);
+		spaceWalk.zeroGreen();
 		spaceWalk.verticleGlitcher();
 		spaceWalk.horizontalGlitcher();
 		spaceWalk.explore();

@@ -163,9 +163,9 @@ public class Picture extends SimplePicture
 		  {
 			  for (col = glitchPoint - 20; col < glitchPoint; col++)
 			  {
-					  copiedPixel = pixels[row][glitchPoint];
-					  nextPixel = pixels[row][col];
-					  nextPixel.setColor(copiedPixel.getColor());
+				  copiedPixel = pixels[row][glitchPoint];
+				  nextPixel = pixels[row][col];
+				  nextPixel.setColor(copiedPixel.getColor());
 			  }
 		  }
 		  glitchPoint += 100;
@@ -188,9 +188,13 @@ public class Picture extends SimplePicture
 		  {
 			  for (row = glitchPoint - 5; row < glitchPoint; row++)
 			  {
-					  copiedPixel = pixels[glitchPoint][col];
-					  nextPixel = pixels[row][col];
-					  nextPixel.setColor(copiedPixel.getColor());
+				  int red = (int) (Math.random() * 256);
+				  int green = (int) (Math.random() * 256);
+				  int blue = (int) (Math.random() * 256);
+				  copiedPixel = pixels[glitchPoint][col];
+				  nextPixel = pixels[row][col];
+				  //nextPixel.setColor(copiedPixel.getColor());
+				  nextPixel.setColor(new Color(red, green, blue));
 			  }
 		  }
 		  glitchPoint += 50;
@@ -252,6 +256,28 @@ public class Picture extends SimplePicture
 			  pixelObj.setAlpha(a);
 		  }
 	  }
+  }
+  
+  public void horizontalGreen()
+  {
+	  Pixel copiedPixel = null;
+	  Pixel nextPixel = null;
+	  Pixel[][] pixels = this.getPixels2D();
+	  
+	  //int glitchPoint = 40;
+	  
+	  //int row = glitchPoint - 5;
+	  
+		  for (int col = 0; col < 400; col++)
+		  {
+			  for (int row = 0; row < 331; row++)
+			  {
+				  //copiedPixel = pixels[glitchPoint][col];
+				  nextPixel = pixels[row][col];
+				  //nextPixel.setColor(copiedPixel.getColor());
+				  nextPixel.setGreen(255);
+			  }
+		  }
   }
   
   /** Method that mirrors the picture around a 
@@ -444,7 +470,7 @@ public class Picture extends SimplePicture
 	  {
 		  for (int col = 0; col < mainPixels[0].length; col++)
 		  {
-			  if (mainPixels[row][col].colorDistance(changeColor) < 75)
+			  if (mainPixels[row][col].colorDistance(changeColor) < 20)
 			  {
 				  mainPixels[row][col].setColor(replacementPixels[row][col].getColor());
 			  }
